@@ -1,0 +1,109 @@
+#############################
+# General settings ##########
+
+# For GitHub page:
+#url:     "http://yourname.github.io"
+#baseurl: ""
+
+# For GitHub project page:
+#url:     "http://username.github.io/projectname"
+#baseurl: "/projectname"
+
+title:       "Your Awesome Title"
+description: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+url_pretty:  "http://yourname.github.io"
+
+
+#############################
+# Build settings
+
+# Exclude these from production
+exclude: ["Gemfile","Gemfile.lock","LICENSE","README.md","CNAME","*.bak","NOTES.md",".gitignore",".git"]
+
+timezone:      "Europe/Greenwich" # this is fake, put your timezone here
+markdown:      kramdown
+highlighter:   rouge
+permalink:     /:year-:month-:day-:title/
+paginate:      5
+paginate_path: '/page/:num/'
+
+kramdown:
+  input: GFM
+
+gems:
+  - jekyll-paginate
+
+#############################
+# Navigation bar config
+
+# Square image to show in the navigation bar (optional)
+avatar: "/img/avatar.png"
+
+# List of links in the navigation bar
+navbar:
+  About: "about"
+  Deep Here:
+    - Debian: "http://www.debian.org/"
+    - Duck Duck Go: "https://duckduckgo.com/"
+  wikipedia: "http://wikipedia.org"
+
+
+#############################
+# Footer options
+
+author:
+  name: "James Bond"
+  email: "yourname@users.github.com"
+  facebook: yourname
+  github: yourname
+  twitter: yourname
+  google_plus: +yourname
+  linkedin: yourname
+  xing: yourname
+  stackoverflow: "123456/yourlink"
+  snapchat: yourname
+  instagram: yourname
+  youtube: user/yourlink # or channel/yourlink
+  spotify: yourname
+
+# Select which links to show in the footer
+footer_links_active:
+  rss: true
+  facebook: false
+  email: true
+  twitter: false
+  google_plus: false
+  github: false
+  linkedin: false
+  xing: false
+  stackoverflow: false
+  snapchat: false
+  instagram: false
+  youtube: false
+  spotify: false
+
+# Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
+#disqus: "shortname"
+
+# Fill in your Google Analytics ID to track your website using GA
+#google_analytics: "UA-1234567-8"
+
+#############################
+# All others
+tag_page: "/tag/"
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true  # add comments to all blog posts
+      social-share: true # add social media sharing buttons to all blog posts
+  -
+    scope:
+      path: "" # all files
+    values:
+      layout: "page"
+      show_avatar: true
