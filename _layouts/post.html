@@ -15,20 +15,22 @@ layout: base
       {% endif %}
 
       <div class="pager row">
-        {% if page.previous.url %}
-          <div class="col-lg-1 col-md-1 col-lg-pull-2 col-md-pull-2">
+        <div class="col-lg-1 col-md-1 col-lg-pull-2 col-md-pull-2">
+          {% if page.previous.url %}
             <a class="prev" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">‹</a>
-          </div>
-        {% endif %}
-        {% if page.next.url %}
-          <div class="col-lg-1 col-lg-push-12 col-md-1 col-md-push-12">
+          {% endif %}
+        </div>
+        <div class="col-lg-1 col-lg-push-12 col-md-1 col-md-push-12">
+          {% if page.next.url %}
             <a class="next" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">›</a>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
 
       <div class="related">
+        {% if site.related_posts %}
         <h2>Also</h2>
+        {% endif %}
         <div class="related-posts row">
           {% for post in site.related_posts limit:4 %}
             <div class="col-lg-3 col-md-3">
