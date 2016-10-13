@@ -458,7 +458,7 @@ hr.small {
     opacity: 0;
     background: no-repeat center center;
     @include backgroundsize(cover);
-    @incluide transition((opacity 1s linear));
+    @include transition((opacity 1s linear));
   }
 
   .img-desc {
