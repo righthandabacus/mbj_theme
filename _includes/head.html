@@ -59,7 +59,7 @@
     {% endfor %}
   {% endif %}
 
-  <!-- Facebook OpenGraph tags -->
+  {% comment %} Facebook OpenGraph tags {% endcomment %}
   <meta property="og:title" content="{{ titlestring | strip }}" />
   <meta property="og:type" content="website" />
   {% if page.id %}
@@ -75,7 +75,7 @@
     <meta property="og:image" content="" />
   {% endif %}
   
-  <!-- Twitter summary cards -->
+  {% comment %} Twitter summary cards {% endcomment %}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@{{ site.author.twitter }}" />
   <meta name="twitter:creator" content="@{{ site.author.twitter }}" />
@@ -87,17 +87,17 @@
     <meta name="twitter:image" content="{{ site.url }}{{ site.avatar }}" />
   {% endif %}
   
-  <!-- mathjax in style of math.stackexchange -->
+  {% comment %} mathjax in style of math.stackexchange {% endcomment %}
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
       tex2jax: {
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
         processEscapes: true
       }
     });
-  </script>
-  <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
       var all = MathJax.Hub.getAllJax(), i;
       for(i=0; i < all.length; i += 1) {

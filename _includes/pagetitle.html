@@ -1,31 +1,41 @@
 {% if page.titlebanner or page.title %}
+  {% if page.titlebanner %}
+    {% assign headerdiv_code = "banner" %}
+  {% else %}
+    {% assign headerdiv_code = "no-img" %}
+  {% endif %}
   <header class="header-section{% if page.titlebanner %} has-img{% endif %}">
-    {% if page.titlebanner %}
-      {% comment %}
-          div to hold a list of banner images to show behind title text, in case of multiple, will loop through by animation
-      {% endcomment %}
-      <div id="header-banners" data-num-img={% if page.titlebanner.first %}{{ page.titlebanner.size }}{% else %}1{% endif %}
-        {% for titlebanner in page.titlebanner %}
-          {% assign imgnum = forloop.index %}
-          {% for imginfo in titlebanner %}
-            {% if imginfo[0] %}
-              data-img-src-{{ imgnum }}="{% if imginfo[0] contains '//' %}{{ imginfo[0] }}{% else %}{{ imginfo[0] | prepend: site.baseurl }}{% endif %}"
-              data-img-desc-{{ imgnum }}="{{ imginfo[1] }}"
-            {% else %}
-              data-img-src-{{ imgnum }}="{% if imginfo contains '//' %}{{ imginfo }}{% else %}{{ imginfo | prepend: site.baseurl }}{% endif %}"
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-      ></div>
-      {% assign headerdiv_code = "banner" %}
-    {% else %}
-      {% assign headerdiv_code = "no-img" %}
-    {% endif %}
-  
-    {% comment %}
-        text on the header section of a page
-    {% endcomment %}
     <div class="intro-header {{ headerdiv_code }}">
+      {% comment %}
+          Carousel banner via bootstrap.js
+      {% endcomment %}
+      {% if page.titlebanner %}
+        <div id="header-carousel" class="carousel slide" data-ride="carousel" data-pause="null" data-keyboard="false" data-interval="3000">
+          <ol class="carousel-indicators">
+            {% for titlebanner in page.titlebanner %}
+              <li data-target="#header-carousel" data-slide-to="{{ forloop.index0 }}"></li>
+            {% endfor %}
+          </ol>
+          <div class="carousel-inner">
+            {% for titlebanner in page.titlebanner %}
+              <div class="item{% if forloop.first %} active{% endif %}">
+                {% for imginfo in titlebanner %}
+                  {% if imginfo[0] %}
+                    <img src="{% if imginfo[0] contains '//' %}{{ imginfo[0] }}{% else %}{{ imginfo[0] | prepend: site.baseurl }}{% endif %}"
+                         alt="{{ imginfo[1] }}" />
+                    <div class="carousel-caption">{{ imginfo[1] }}</div>
+                  {% else %}
+                    <img src="{% if imginfo contains '//' %}{{ imginfo }}{% else %}{{ imginfo | prepend: site.baseurl }}{% endif %}" />
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      {% comment %}
+          text on the header section of a page
+      {% endcomment %}
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -56,9 +66,6 @@
           </div>
         </div>
       </div>
-      {% if page.titlebanner %}
-        <span class='img-desc'></span>
-      {% endif %}
     </div>
   </header>
 {% else %}

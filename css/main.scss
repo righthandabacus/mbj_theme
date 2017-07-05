@@ -447,30 +447,28 @@ hr.small {
 
 .intro-header.banner {
   background: no-repeat center center;
+  height: 500px;
   margin-top: 51px; /* The small navbar is 50px tall + 1px border */
   margin-bottom: 35px;
   @include backgroundsize(cover);
 
-  .banner-transition {
-    position: absolute;
+  .carousel-inner {
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    background: no-repeat center center;
-    @include backgroundsize(cover);
-    @include transition((opacity 1s linear));
-  }
-
-  .img-desc {
-    background: rgba($colour_bg_main,0.3);
+    height: 500px !important;
+    overflow: hidden;
     position: absolute;
-    padding: 5px 10px;
-    font-size: 11px;
-    color: $colour_text_main;
-    font-family: $font_fancy;
-    right: 0;
-    bottom: 0;
-    display: none;
+
+    .carousel-caption {
+        background: rgba($colour_bg_main,0.3);
+        padding: 5px 10px;
+        font-size: 11px;
+        color: $colour_text_main;
+        font-family: $font_fancy;
+        right: 10px;
+        bottom: auto;
+        left: auto;
+        top: 460px;
+    }
   }
 
   .page-heading, .post-heading {

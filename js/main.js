@@ -1,10 +1,6 @@
 // Modified from Beautiful Jekyll by Dean Attali
 // vim:set ts=4 sw=4:
 var main = {
-	bigImgEl : null,
-	numImgs : null,
-	currentImg : null,
-
 	init : function() {
 		// Minimise navbar after scrolling a little bit down
 		$(window).scroll(function() {
@@ -57,76 +53,6 @@ var main = {
 			});
 			fakeMenu.remove();
 		};
-
-		// show the big header image
-		main.initImgs();
-	},
-
-	initImgs : function() {
-		if ($("#header-banners").length == 0) {
-			return
-		};
-
-		// Function to load a different image in case of multiple
-		// For better UX, prefetch the next image so that it will already be loaded when we want to show it
-		var getNextImg = function() {
-			while(true) {
-				var imgInfo = main.getRandomImg();
-				if (imgInfo.src != main.currentImg) {
-					main.currentImg = imgInfo.src;
-					break;
-				}
-			}
-			var prefetchImg = new Image();
-			prefetchImg.src = imgInfo.src;
-			// if I want to do something once the image is ready: `prefetchImg.onload = function(){}`
-
-			setTimeout(function(){
-				var img = $("<div></div>").addClass("banner-transition").css("background-image", 'url(' + imgInfo.src + ')');
-				$(".intro-header.banner").prepend(img);
-
-				// after the animation of fading in the new image is done, prefetch the next one
-				//img.one("transitioned webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
-				setTimeout(function() {
-					main.setImg(imgInfo.src, imgInfo.desc);
-					img.hide();
-					getNextImg();
-					img.remove();
-				}, 1000); 
-			}, 6000);
-		};
-
-		// If the page has large images to randomly select from, choose an image
-		main.bigImgEl = $("#header-banners");
-		main.numImgs = main.bigImgEl.attr("data-num-img");
-
-		// set an initial image
-		var imgInfo = main.getRandomImg();
-		main.setImg(imgInfo.src, imgInfo.desc);
-
-		// If there are multiple images, cycle through them
-		if (main.numImgs > 1) {
-			getNextImg();
-		};
-	},
-  
-	getRandomImg : function() {
-		// Randomly pick one image
-		var randNum = Math.floor((Math.random() * main.numImgs) + 1);
-		var src = main.bigImgEl.attr("data-img-src-" + randNum);
-		var desc = main.bigImgEl.attr("data-img-desc-" + randNum);
-		return {src:src, desc:desc}
-	},
-  
-	setImg : function(src, desc) {
-		$(".intro-header.banner").fadeTo('fast', 0.6, function() {
-			$(this).css('background-image', 'url('+src+')');
-			if (desc != undefined && desc !== false) {
-				$(".img-desc").text(desc).show();
-			} else {
-				$(".img-desc").hide();
-			}
-		}).fadeTo('fast', 1);
 	}
 };
 
