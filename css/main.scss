@@ -257,7 +257,7 @@ hr.small {
 /*
  * menubar at top
  */
-.navbar-custom {
+.navbar-default {
   background: rgba($colour_bg_aux,0.9);
   border-bottom: $tableborder;
   font-weight: 700;
@@ -314,40 +314,34 @@ hr.small {
 
   /* multi-level menu at right */
   .nav {
-    .navlinks-container {
-      position: relative;
-    };
-    .navlinks-parent:after {
+    .dropdown-toggle:after {
       content: " \25BC"; /* down triangle */
     };
-    .navlinks-children {
+    .dropdown-menu {
+      background: $colour_bg_aux;
       width: 100%;
-      display: none;
       word-break: break-word;
       a {
-        display: block;
         padding: 10px;
         padding-left: 30px;
-        background: $colour_bg_aux;
         text-decoration: none !important;
         border-width: 0 1px 1px 1px;
-        font-weight: 300;
       };
     };
   };
 }
 
 /* Hide/show of the menubar upon page scroll */
-.navbar-custom.navbar-minimised .avatar-container {
+.navbar-default.navbar-minimised .avatar-container {
   opacity: 0;
 }
-.navbar-custom.navbar-expanded .avatar-container {
+.navbar-default.navbar-expanded .avatar-container {
   display: none;
 }
 
 /* screen size customization */
 @media only screen and (min-width: 768px) {
-  .navbar-custom {
+  .navbar-default {
     padding: 20px 0;
     @include transition((background .5s ease-in-out,padding .5s ease-in-out));
 
@@ -366,17 +360,14 @@ hr.small {
     };
 
     .nav {
-      .navlinks-container {
+      .dropdown {
         text-align: center;
       };
-      .navlinks-container:hover {
+      .dropdown:hover {
         /* drop down expanded */
         background: $colour_bg_menuhover;
       };
-      .navlinks-container:hover .navlinks-children {
-        display: block;
-      };
-      .navlinks-children {
+      .dropdown-menu {
         position: absolute;
         a {
           padding-left: 10px;
@@ -387,15 +378,15 @@ hr.small {
     };
   };
 
-  .navbar-custom.navbar-minimised {
+  .navbar-default.navbar-minimised {
     padding: 0;
   };;
 }
 
 @media only screen and (max-width: 767px) {
-  .navbar-custom .nav .navlinks-container.show-children {
+  .navbar-default.nav .dropdown-menu.show-children {
     background: $colour_bg_aux;
-    .navlinks-children {
+    .dropdown-menu {
       display: block;
     };
   };
