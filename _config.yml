@@ -25,13 +25,15 @@ markdown:      kramdown
 highlighter:   rouge
 permalink:     /:year-:month-:day-:title/
 paginate:      5
-paginate_path: '/page/:num/'
+paginate_path: '/page/:num'
 
 kramdown:
   input: GFM
 
 gems:
+  - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
 
 #############################
 # Navigation bar config
@@ -91,6 +93,7 @@ footer_links_active:
 #############################
 # All others
 tag_page: "/tag/"
+cat_page: "/cat/"
 
 defaults:
   -

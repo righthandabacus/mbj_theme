@@ -23,6 +23,13 @@ show_avatar: true
           {% endfor %}
         </span>
       {% endif %}
+      {% if post.categories %}
+        <span class="post-categories">
+          {% for cat in post.categories %}
+            <a href="{{ site.baseurl }}{{ site.cat_page }}#{{ cat }}" class="post-cat">{{ cat }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}
     </p>
     <div class="post-entry">
       {{ post.excerpt | strip_html | xml_escape | truncatewords: 50 }}
@@ -34,15 +41,15 @@ show_avatar: true
 
 {% if paginator.total_pages > 1 %}
   <div class="pager row">
-    {% if paginator.previous_page %}
-      <div class="col-lg-1 col-md-1 col-lg-pull-2 col-md-pull-2">
+    <div class="col-lg-1 col-md-1 col-lg-pull-2 col-md-pull-2">
+      {% if paginator.previous_page %}
         <a class="prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">‹</a>
-      </div>
-    {% endif %}
-    {% if paginator.next_page %}
-      <div class="col-lg-1 col-lg-push-12 col-md-1 col-md-push-12">
+      {% endif %}
+    </div>
+    <div class="col-lg-1 col-lg-push-12 col-md-1 col-md-push-12">
+      {% if paginator.next_page %}
         <a class="next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">›</a>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </div>
 {% endif %}

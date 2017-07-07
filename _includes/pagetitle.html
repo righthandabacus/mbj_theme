@@ -59,6 +59,13 @@
                   {% endfor %}
                 </span>
               {% endif %}
+              {% if page.categories %}
+                <span class="post-categories">
+                  {% for cat in page.categories %}
+                    <a href="{{ site.baseurl }}{{ site.cat_page }}#{{ cat }}" class="post-cat">{{ cat }}</a>
+                  {% endfor %}
+                </span>
+              {% endif %}
               {% if include.type == "post" %}
                 </span>
               {% endif %}

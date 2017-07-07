@@ -139,21 +139,18 @@
         </li>
         {% endif %}
       </ul>
-
-      <!-- copyright section -->
+      {% comment %} Copyright section {% endcomment %}
       <p class="copyright text-muted">
         {{ site.author.name }}
         &nbsp;&bull;&nbsp;
         &copy; {{ site.time | date: '%Y' }}
         &nbsp;&bull;&nbsp; <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a>
-
         {% if site.url_pretty %}
           &nbsp;&bull;&nbsp;
           <a href="{{ site.url }}">{{ site.url_pretty }}</a>
         {% endif %}
       </p>
-
-      <!-- Credit -->
+      {% comment %} Credit section {% endcomment %}
       <p class="theme-by text-muted">
       On a <a href="http://https://github.com/righthandabacus/mbj_theme">heavily modified</a> <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a> theme.
       </p>

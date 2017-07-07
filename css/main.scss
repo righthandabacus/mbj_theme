@@ -420,6 +420,9 @@ hr.small {
     .post-tags {
       float:right;
     };
+    .post-categories {
+      float:right;
+    };
   };
 
   .page-subheading, .post-subheading {
@@ -595,35 +598,26 @@ hr.small {
   }
 }
 
+.post-cat:before {
+  content: "\f115";
+  font-family: FontAwesome;
+  padding-left: .3em;
+  padding-right: .2ex;
+}
 .post-tag:before {
   content: "\f02b";
   font-family: FontAwesome;
   padding-left: .3em;
   padding-right: .2ex;
 }
-a.post-tag {
+a.post-cat, a.post-tag {
   color: $colour_text_meta;
   text-decoration: none;
 }
-a.post-tag:hover {
+a.post-cat:hover, a.post-tag:hover {
   border-radius: 2px;
   color: $colour_text_meta;
   background-color: $colour_bg_menuselect;
-}
-
-
-/*
- * Tags
- */
-.post-preview .blog-tags {
-  margin-top: 5px;
-  margin-bottom: 0;
-}
-
-@media only screen and (min-width: 768px) {
-  .post-preview .blog-tags {
-    margin-top: 10px;
-  }
 }
 
 
