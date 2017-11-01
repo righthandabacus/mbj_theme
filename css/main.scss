@@ -75,6 +75,7 @@ body {
   color: $colour_text_main;
   background: $colour_bg_main;
   position: relative;
+  tab-size: 4;
   font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures contextual;
   -webkit-font-feature-settings: "liga", "dlig";
      -moz-font-feature-settings: "liga=1, dlig=1";
@@ -84,18 +85,22 @@ body {
 }
 p {
   line-height: 1.5;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: $font_title;
   font-weight: 700;
 }
 a {
+  text-decoration: underline;
   color: $colour_text_link;
 }
 a:hover, a:focus {
-  text-decoration: underline;
+  text-decoration: none;
   color: $colour_text_hover;
+}
+div.related a {
+  text-decoration: none; // no underline for "related" at bottom
 }
 blockquote {
   color: $colour_text_quoted;
@@ -106,6 +111,7 @@ blockquote p:first-child {
 }
 code {
   font-size: 75%;
+  color: $colour_text_main;
 }
 img {
   max-width: 100%;
@@ -206,13 +212,15 @@ footer {
   margin: 0;
   border-radius: 0;
   background: none;
+  text-decoration: none !important;
   a {
+    text-decoration: none !important;
     color: $colour_pager;
     opacity: 0.65;
   };
   a:hover, a:focus {
-    opacity: 1.0;
     text-decoration: none !important;
+    opacity: 1.0;
   };
 
   .prev {
@@ -242,6 +250,12 @@ hr.small {
 
 #social-share-section {
   margin-bottom: 30px;
+}
+
+.lastedit {
+  font-family: $font-fancy;
+  color: $colour_text_meta;
+  float: right;
 }
 
 .disqus-comments {
@@ -576,6 +590,9 @@ hr.small {
     .post-tags {
       float:right;
     };
+    .post-categories {
+      float:right;
+    };
   }
   .post-entry {
     font-family: $font_body;
@@ -632,7 +649,6 @@ td.code pre {
   background-repeat: repeat;
   background-size: 3em 3em;
   background-position: 0px 10px;
-  border-left: 7px solid $colour_marker;
 }
 code table,
 code table td,
