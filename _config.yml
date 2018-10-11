@@ -18,7 +18,7 @@ url_pretty:  "http://yourname.github.io"
 # Build settings
 
 # Exclude these from production
-exclude: ["Gemfile","Gemfile.lock","LICENSE","README.md","CNAME","*.bak","NOTES.md",".gitignore",".git"]
+exclude: ["Gemfile","Gemfile.lock","LICENSE","README.md","CNAME","*.bak","NOTES.md",".gitignore",".git","_draft"]
 
 timezone:      "Europe/Greenwich" # this is fake, put your timezone here
 markdown:      kramdown
@@ -30,7 +30,7 @@ paginate_path: '/page/:num'
 kramdown:
   input: GFM
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
@@ -99,6 +99,13 @@ cat_page: "/cat/"
 defaults:
   -
     scope:
+      path: "" # all files
+      type: "pages"
+    values:
+      layout: "page"
+      show_avatar: true
+  -
+    scope:
       path: ""
       type: "posts"
     values:
@@ -107,7 +114,6 @@ defaults:
       social-share: true # add social media sharing buttons to all blog posts
   -
     scope:
-      path: "" # all files
+      path: "_posts"
     values:
-      layout: "page"
-      show_avatar: true
+      category: "blog"

@@ -29,6 +29,16 @@
     {% endfor %}
   {% endif %}
 
+  {% if layout.more_css %}
+    {% for css in layout.more_css %}
+      {% if css contains "//" %}
+        <link rel="stylesheet" href="{{ css }}" />
+      {% else %}
+        <link rel="stylesheet" href="{{ css | prepend: site.baseurl }}" />
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
   {% if layout.googlefonts %}
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ layout.googlefonts | join: '|' }}" />
   {% endif %}
@@ -93,8 +103,8 @@
       jax: ["input/TeX", "output/HTML-CSS"],
       tex2jax: {
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-        inlineMath: [ ['$','$'] ],
-        displayMath: [ ['$$','$$'] ],
+        inlineMath: [ ['$$','$$'] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
         processEscapes: true
       }
     });
@@ -105,5 +115,5 @@
       }
     });
   </script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
